@@ -2,10 +2,17 @@
 
 input = ARGF.read.chomp
 digits = input.split(//).map(&:to_i)
-if digits.length > 1
-  puts digits.reduce([ digits[-1], 0 ]) { |memo, digit|
-    [ digit, memo[1] + (if memo[0] == digit then digit else 0 end) ]
-  }[1]
+if digits.size > 1
+  # STEP = 1 # part one
+  STEP = digits.size / 2 # part two
+
+  puts digits.each_with_index.reduce(0) { |memo, (digit, index)|
+    if digit == digits[(index + STEP) % digits.size]
+      memo + digit
+    else
+      memo
+    end
+  }
 else
-  puts "0"
+  puts 0
 end
