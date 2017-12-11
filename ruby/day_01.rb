@@ -31,12 +31,7 @@ class Day01
 end
 
 if __FILE__ == $PROGRAM_NAME
-  case ARGV[0]
-  when nil then
-    puts Day01.variant_1(STDIN.read.chomp)
-  when "-v2" then
-    puts Day01.variant_2(STDIN.read.chomp)
-  else
-    puts "Usage: ruby #{$PROGRAM_NAME} [-v2]"
-  end
+  input = STDIN.read.chomp
+  puts Day01.variant_1(input)
+  puts Day01.variant_2(input)
 end
